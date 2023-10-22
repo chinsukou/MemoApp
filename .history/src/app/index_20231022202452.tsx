@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 import Header from '../components/Header'
 import MemoListItem from '../components/MemoListItem'
@@ -16,7 +16,7 @@ const Index = (): JSX.Element => {
         <MemoListItem />
       </View>
 
-      <CircleBotton>+</CircleBotton>
+      <CircleBotton />
 
     </View>
   )
