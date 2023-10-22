@@ -42,10 +42,6 @@ const Index = (): JSX.Element => {
         </View>
 
       </View>
-
-      <View>
-        <Text>+</Text>
-      </View>
     </View>
   )
 }

@@ -1,8 +1,8 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 
 const Index = (): JSX.Element => {
   return (
-    <View style={styles.container}>
+    <View>
       <View>
         <View>
           <Text>Memo App</Text>
@@ -42,20 +42,8 @@ const Index = (): JSX.Element => {
         </View>
 
       </View>
-
-      <View>
-        <Text>+</Text>
-      </View>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
 
 export default Index
