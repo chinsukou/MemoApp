@@ -1,10 +1,11 @@
 import {
-  View, TextInput, StyleSheet, KeyboardAvoidingView
+  View, TextInput, StyleSheet
 } from 'react-native'
 import { router } from 'expo-router'
 import { collection, addDoc, Timestamp } from 'firebase/firestore'
 import { useState } from 'react'
 
+import { KeyboardAvoidingView } from '../../components/KeyBoardAvoidingView'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
 import { db, auth } from '../../config'
@@ -35,7 +36,6 @@ const Create = (): JSX.Element => {
           style={styles.input}
           value={bodyText}
           onChangeText={(text) => { setBodyText(text) }}
-          autoFocus
         />
       </View>
       <CircleButton onPress={() => { handlePress(bodyText) }}>
