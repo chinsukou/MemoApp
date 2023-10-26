@@ -2,7 +2,7 @@ import {
   View, TextInput, StyleSheet, KeyboardAvoidingView
 } from 'react-native'
 import { router } from 'expo-router'
-import { collection, addDoc, Timestamp } from 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
 import { useState } from 'react'
 
 import CircleButton from '../../components/CircleButton'
@@ -14,7 +14,7 @@ const handlePress = (bodyText: string): void => {
   const ref = collection(db, `users/${auth.currentUser.uid}/memos`)
   addDoc(ref, {
     bodyText,
-    updatedAt: Timestamp.fromDate(new Date())
+    updatedAt: new Date()
   })
     .then((docRef) => {
       console.log('success', docRef.id)

@@ -12,7 +12,7 @@ const handlePress = (): void => {
     .then(() => {
       router.replace('/auth/log_in')
     })
-    .catch(() => {
+    .catch((error) => {
       Alert.alert('ログアウトに失敗しました')
     })
 }

@@ -1,13 +1,13 @@
 import { Redirect, router } from 'expo-router'
-import { onAuthStateChanged } from 'firebase/auth'
-import { useEffect } from 'react'
+import { onAuthStateChange } from 'firebase/auth'
 
 import { auth } from '../config'
+import { useEffect } from 'react'
 
 const Index = (): JSX.Element => {
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user !== null) {
+    onAuthStateChange(auth, (user) => {
+      if (user) {
         router.replace('/memo/list')
       }
     })

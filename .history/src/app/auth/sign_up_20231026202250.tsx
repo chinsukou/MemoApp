@@ -1,5 +1,5 @@
 import {
-  View, Text, TextInput, Alert,
+  View, Text, TextInput,
   TouchableOpacity, StyleSheet
 } from 'react-native'
 
@@ -16,13 +16,11 @@ const handlePress = (email: string, password: string): void => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       console.log(userCredential.user.uid)
-      router.replace('/memo/list')
     })
     .catch((error) => {
-      const { code, message } = error
-      console.log(code, message)
-      Alert.alert(message)
+      console.log(error)
     })
+  router.replace('/memo/list')
 }
 
 const SignUp = (): JSX.Element => {
@@ -53,7 +51,7 @@ const SignUp = (): JSX.Element => {
         <Button label='Submit' onPress={() => { handlePress(email, password) }} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <Link href='/auth/log_in' asChild replace>
+          <Link href='/auth/log_in' asChild>
             <TouchableOpacity>
               <Text style={styles.footerLink}>Log in.</Text>
             </TouchableOpacity>

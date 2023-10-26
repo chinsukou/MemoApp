@@ -1,5 +1,5 @@
 import {
-  View, Text, TextInput, Alert,
+  View, Text, TextInput,
   TouchableOpacity, StyleSheet
 } from 'react-native'
 
@@ -21,7 +21,6 @@ const handlePress = (email: string, password: string): void => {
     .catch((error) => {
       const { code, message } = error
       console.log(code, message)
-      Alert.alert(message)
     })
 }
 
@@ -53,7 +52,7 @@ const SignUp = (): JSX.Element => {
         <Button label='Submit' onPress={() => { handlePress(email, password) }} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
-          <Link href='/auth/log_in' asChild replace>
+          <Link href='/auth/log_in' asChild>
             <TouchableOpacity>
               <Text style={styles.footerLink}>Log in.</Text>
             </TouchableOpacity>
