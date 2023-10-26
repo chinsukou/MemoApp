@@ -4,7 +4,6 @@ import {
 } from 'react-native'
 
 import { Link, router } from 'expo-router'
-import { useState } from 'react'
 
 import Button from '../../components/Button'
 
@@ -37,8 +36,7 @@ const SignUp = (): JSX.Element => {
           secureTextEntry
           placeholder='Passeord'
           textContentType='password'
-        />
-        <Button label='Submit' onPress={handlePress} />
+        />        <Button label='Submit' onPress={handlePress} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
           <Link href='/auth/log_in' asChild>

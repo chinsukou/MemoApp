@@ -9,41 +9,29 @@ import { useState } from 'react'
 import Button from '../../components/Button'
 
 const handlePress = (): void => {
-  // 会員登録
+  // ログイン
   router.replace('/memo/list')
 }
 
-const SignUp = (): JSX.Element => {
+const LogIn = (): JSX.Element => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
-        <Text style={styles.title}>Sign Up</Text>
+        <Text style={styles.title}>Log In</Text>
         <TextInput
           style={styles.input}
           value={email}
           onChangeText={(text) => { setEmail(text) }}
-          autoCapitalize='none'
-          keyboardType='email-address'
-          placeholder='Email Address'
-          textContentType='emailAddress'
         />
-        <TextInput
-          style={styles.input}
-          value={password}
-          onChangeText={(text) => { setPassword(text) }}
-          autoCapitalize='none'
-          secureTextEntry
-          placeholder='Passeord'
-          textContentType='password'
-        />
+        <TextInput style={styles.input} value='Password' />
         <Button label='Submit' onPress={handlePress} />
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Already registered?</Text>
-          <Link href='/auth/log_in' asChild>
+          <Text style={styles.footerText}>Not register</Text>
+          <Link href='/auth/sign_up' asChild>
             <TouchableOpacity>
-              <Text style={styles.footerLink}>Log in.</Text>
+              <Text style={styles.footerLink}>Sign up here!</Text>
             </TouchableOpacity>
           </Link>
         </View>
@@ -92,4 +80,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default SignUp
+export default LogIn

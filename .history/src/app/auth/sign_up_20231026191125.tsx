@@ -4,7 +4,6 @@ import {
 } from 'react-native'
 
 import { Link, router } from 'expo-router'
-import { useState } from 'react'
 
 import Button from '../../components/Button'
 
@@ -14,8 +13,6 @@ const handlePress = (): void => {
 }
 
 const SignUp = (): JSX.Element => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
   return (
     <View style={styles.container}>
       <View style={styles.inner}>
@@ -37,8 +34,7 @@ const SignUp = (): JSX.Element => {
           secureTextEntry
           placeholder='Passeord'
           textContentType='password'
-        />
-        <Button label='Submit' onPress={handlePress} />
+        />        <Button label='Submit' onPress={handlePress} />
         <View style={styles.footer}>
           <Text style={styles.footerText}>Already registered?</Text>
           <Link href='/auth/log_in' asChild>
