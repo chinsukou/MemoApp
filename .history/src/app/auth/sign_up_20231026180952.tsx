@@ -5,26 +5,28 @@ import {
 
 import { Link, router } from 'expo-router'
 
+import Header from '../../components/Header'
 import Button from '../../components/Button'
 
 const handlePress = (): void => {
-  // ログイン
+  // 会員登録
   router.push('/memo/list')
 }
 
-const LogIn = (): JSX.Element => {
+const SignUp = (): JSX.Element => {
   return (
     <View style={styles.container}>
+      <Header />
       <View style={styles.inner}>
-        <Text style={styles.title}>Log In</Text>
+        <Text style={styles.title}>Sign Up</Text>
         <TextInput style={styles.input} value='Email addres' />
         <TextInput style={styles.input} value='Password' />
         <Button label='Submit' onPress={handlePress} />
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Not register</Text>
-          <Link href='/auth/sign_up' asChild>
+          <Text style={styles.footerText}>Already registered?</Text>
+          <Link href='/auth/log_in' asChild>
             <TouchableOpacity>
-              <Text style={styles.footerLink}>Sign up here!</Text>
+              <Text style={styles.footerLink}>Log in.</Text>
             </TouchableOpacity>
           </Link>
         </View>
@@ -73,4 +75,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default LogIn
+export default SignUp

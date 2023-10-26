@@ -6,12 +6,7 @@ const Layout = (): JSX.Element => {
       backgroundColor: '#467FD3'
     },
     headerTintColor: '#ffffff',
-    headerTitle: 'Memo App',
-    headerBackTitle: 'Back',
-    headerTitleStyle: {
-      fontSize: 22,
-      fontWeight: 'bold'
-    }
+    headerTitle: 'Memo App'
   }} />
 }
 

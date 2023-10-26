@@ -5,6 +5,7 @@ import {
 
 import { Link, router } from 'expo-router'
 
+import Header from '../../components/Header'
 import Button from '../../components/Button'
 
 const handlePress = (): void => {
@@ -15,6 +16,7 @@ const handlePress = (): void => {
 const LogIn = (): JSX.Element => {
   return (
     <View style={styles.container}>
+      <Header />
       <View style={styles.inner}>
         <Text style={styles.title}>Log In</Text>
         <TextInput style={styles.input} value='Email addres' />
