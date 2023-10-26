@@ -5,17 +5,16 @@ import { useEffect } from 'react'
 import MemoListItem from '../../components/MemoListItem'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
-import LogOutButton from '../../components/LogOutButton'
 
 const handlePress = (): void => {
   router.push('/memo/create')
 }
 
 const List = (): JSX.Element => {
-  const navigation = useNavigation()
   useEffect(() => {
+    const navigation = useNavigation()
     navigation.setOptions({
-      headerRight: () => { return <LogOutButton /> }
+      headerRight: () => { return <Text>Test</Text>}
     })
   }, [])
   return (
