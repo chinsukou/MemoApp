@@ -18,7 +18,7 @@ const Detail = (): JSX.Element => {
   const [memo, setMemo] = useState<Memo | null>(null)
   useEffect(() => {
     if (auth.currentUser === null) { return }
-    const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
+    const ref = doc(db, `users/${auth.currentUser.uid}/memos`, String(id))
     const unsubscribe = onSnapshot(ref, (memoDoc) => {
       const { bodyText, updatedAt } = memoDoc.data() as Memo
       setMemo({

@@ -33,6 +33,7 @@ const Edit = (): JSX.Element => {
     const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
     getDoc(ref)
       .then((docRef) => {
+        console.log(docRef.data())
         const RemoteBodyText = docRef?.data()?.bodyText
         setBodyText(RemoteBodyText)
       })
@@ -40,6 +41,7 @@ const Edit = (): JSX.Element => {
         console.log(error)
       })
   }, [])
+  console.log('edit', id)
   return (
     <KeyboardAvoidingView behavior='height' style={styles.container}>
       <View style={styles.inputContainer}>
@@ -69,8 +71,8 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlignVertical: 'top',
     fontSize: 16,
-    lineHeight: 24,
-    paddingHorizontal: 27
+    lineHeight: 24
+    paddingHorizontal: 27,
   }
 })
 

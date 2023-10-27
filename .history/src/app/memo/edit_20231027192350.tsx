@@ -1,5 +1,5 @@
 import {
-  View, TextInput, StyleSheet, KeyboardAvoidingView, Alert
+  View, TextInput, StyleSheet, KeyboardAvoidingView
 } from 'react-native'
 import { router, useLocalSearchParams } from 'expo-router'
 import { useState, useEffect } from 'react'
@@ -7,6 +7,7 @@ import { doc, getDoc, setDoc, Timestamp } from 'firebase/firestore'
 
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
+import { type Memo } from '../../../types/memo'
 import { auth, db } from '../../config'
 
 const handlePress = (id: string, bodyText: string): void => {
@@ -16,13 +17,7 @@ const handlePress = (id: string, bodyText: string): void => {
     bodyText,
     updatedAt: Timestamp.fromDate(new Date())
   })
-    .then(() => {
-      router.back()
-    })
-    .catch((error) => {
-      console.log(error)
-      Alert.alert('更新に失敗しました')
-    })
+  router.back()
 }
 
 const Edit = (): JSX.Element => {
@@ -33,6 +28,7 @@ const Edit = (): JSX.Element => {
     const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
     getDoc(ref)
       .then((docRef) => {
+        console.log(docRef.data())
         const RemoteBodyText = docRef?.data()?.bodyText
         setBodyText(RemoteBodyText)
       })
@@ -40,6 +36,7 @@ const Edit = (): JSX.Element => {
         console.log(error)
       })
   }, [])
+  console.log('edit', id)
   return (
     <KeyboardAvoidingView behavior='height' style={styles.container}>
       <View style={styles.inputContainer}>
@@ -63,14 +60,14 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     paddingVertical: 32,
+    paddingHorizontal: 27,
     flex: 1
   },
   input: {
     flex: 1,
     textAlignVertical: 'top',
     fontSize: 16,
-    lineHeight: 24,
-    paddingHorizontal: 27
+    lineHeight: 24
   }
 })
 
