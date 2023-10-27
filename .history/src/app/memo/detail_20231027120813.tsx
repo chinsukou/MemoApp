@@ -19,29 +19,30 @@ const Detail = (): JSX.Element => {
   useEffect(() => {
     if (auth.currentUser === null) { return }
     const ref = doc(db, `users/${auth.currentUser.uid}/memos`, String(id))
-    const unsubscribe = onSnapshot(ref, (memoDoc) => {
-      const { bodyText, updatedAt } = memoDoc.data() as Memo
+    onSnapshot(ref, (memoDoc) => {
+      const { bodyText, updatedAt } = memoDoc.data()
       setMemo({
         id: memoDoc.id,
         bodyText,
         updatedAt
       })
     })
-    return unsubscribe
   }, [])
   return (
     <View style={styles.container}>
       <View style={styles.memoHeader}>
-        <Text numberOfLines={1} style={styles.memoTitle}>
-          {memo?.bodyText}
+        <Text style={styles.memoTitle}>
+          買い物リスト
         </Text>
         <Text style={styles.memoDate}>
-          {memo?.updatedAt?.toDate().toLocaleString('ja-JP')}
+          2023年10月1日 10:00
         </Text>
       </View>
       <ScrollView style={styles.memoBody}>
         <Text style={styles.memoBodyText}>
-        {memo?.bodyText}
+        買い物リスト
+        書体やレイアウトなどを確認するために用います。
+        本文用なので使い方を間違えると不自然に見えることもありますので要注意。
         </Text>
       </ScrollView>
       <CircleButton onPress={handlePress} style={{ top: 60, bottom: 'auto' }}>
@@ -75,10 +76,10 @@ const styles = StyleSheet.create({
     lineHeight: 16
   },
   memoBody: {
+    paddingVertical: 32,
     paddingHorizontal: 27
   },
   memoBodyText: {
-    paddingVertical: 32,
     fontSize: 16,
     lineHeight: 24,
     color: '#000000'

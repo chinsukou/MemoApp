@@ -45,8 +45,11 @@ const List = (): JSX.Element => {
     <View style={styles.container}>
       <FlatList
         data={memos}
-        renderItem={({ item }) => <MemoListItem memo={item} />}
+        renderItem={({ item }) => { return <MemoListItem memo={item} /> }}
       />
+      <View>
+        {memos.map((memo) => <MemoListItem memo={memo} />)}
+      </View>
       <CircleButton onPress={handlePress}>
         <Icon name='plus' size={40} color='#ffffff' />
       </CircleButton>

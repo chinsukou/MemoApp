@@ -19,7 +19,7 @@ const Detail = (): JSX.Element => {
   useEffect(() => {
     if (auth.currentUser === null) { return }
     const ref = doc(db, `users/${auth.currentUser.uid}/memos`, String(id))
-    const unsubscribe = onSnapshot(ref, (memoDoc) => {
+    onSnapshot(ref, (memoDoc) => {
       const { bodyText, updatedAt } = memoDoc.data() as Memo
       setMemo({
         id: memoDoc.id,
@@ -27,7 +27,6 @@ const Detail = (): JSX.Element => {
         updatedAt
       })
     })
-    return unsubscribe
   }, [])
   return (
     <View style={styles.container}>
@@ -75,10 +74,10 @@ const styles = StyleSheet.create({
     lineHeight: 16
   },
   memoBody: {
+    paddingVertical: 32,
     paddingHorizontal: 27
   },
   memoBodyText: {
-    paddingVertical: 32,
     fontSize: 16,
     lineHeight: 24,
     color: '#000000'

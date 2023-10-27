@@ -75,10 +75,10 @@ const styles = StyleSheet.create({
     lineHeight: 16
   },
   memoBody: {
+    paddingVertical: 32,
     paddingHorizontal: 27
   },
   memoBodyText: {
-    paddingVertical: 32,
     fontSize: 16,
     lineHeight: 24,
     color: '#000000'
