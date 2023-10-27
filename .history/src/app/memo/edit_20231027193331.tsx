@@ -5,6 +5,7 @@ import { router, useLocalSearchParams } from 'expo-router'
 import { useState, useEffect } from 'react'
 import { doc, getDoc, setDoc, Timestamp } from 'firebase/firestore'
 
+import KeyBoardAvoidingView from '../../components/KeyBoardAvoidingView'
 import CircleButton from '../../components/CircleButton'
 import Icon from '../../components/Icon'
 import { auth, db } from '../../config'
@@ -40,16 +41,14 @@ const Edit = (): JSX.Element => {
         console.log(error)
       })
   }, [])
-  console.log('edit', id)
   return (
-    <KeyboardAvoidingView behavior='height' style={styles.container}>
+    <KeyboardAvoidingView style={styles.container}>
       <View style={styles.inputContainer}>
         <TextInput
           multiline
           style={styles.input}
           value={bodyText}
           onChangeText={(text) => { setBodyText(text) }}
-          autoFocus
         />
       </View>
       <CircleButton onPress={() => { handlePress(id, bodyText) }}>
