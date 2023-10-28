@@ -10,7 +10,7 @@ interface Props {
   memo: Memo
 }
 
-const handlePress = (id: string): void => {
+const handlePress = {id: string}: void => {
   if (auth.currentUser === null) { return }
   const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id)
   Alert.alert('メモを削除します', 'よろしいですか？', [
@@ -22,7 +22,7 @@ const handlePress = (id: string): void => {
       style: 'destructive',
       onPress: () => {
         deleteDoc(ref)
-          .catch(() => { Alert.alert('削除に失敗しました') })
+          .catch((error) => { Alert.alert('削除に失敗しました') })
       }
     }
   ])
